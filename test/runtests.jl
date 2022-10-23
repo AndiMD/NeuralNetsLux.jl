@@ -2,5 +2,5 @@ using NeuralNetsLux
 using Test
 
 @testset "NeuralNetsLux.jl" begin
-    # Write your tests here.
+    @test NeuralNetsLux.greet_your_package_name() == "Hello NeuralNetsLux!"
 end

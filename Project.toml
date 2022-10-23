@@ -1,7 +1,10 @@
 name = "NeuralNetsLux"
 uuid = "3eb6d2f4-7bd6-458c-954e-c6012ef3e24a"
-authors = ["AndiMD <none@gmx.net> and contributors"]
+authors = ["Andreas Doerfler <andreas.m.doerfler@gmail.com> and contributors"]
 version = "0.1.0"
+
+[deps]
+Lux = "b2108857-7c20-44ae-9111-449ecde12c47"
 
 [compat]
 julia = "1"
