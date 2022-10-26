@@ -58,3 +58,34 @@ row = [1, 0, nothing]
 output = forward_propagate(network, row)
 print(output)
 
+
+# Calculate the derivative of an neuron output
+function transfer_derivative(output)
+	return output * (1.0 - output)
+end
+
+# Backpropagate error and store in neurons
+function backward_propagate_error(network, expected)
+	for i in reversed(range(len(network)))
+		layer = network[i]
+		errors = list()
+		if i != length(network)-1
+			for j in range(len(layer))
+				error = 0.0
+				for neuron in network[i+1]
+					error += (neuron["weights"][j] * neuron["delta"])
+                end
+				push!(errors,error)
+            end
+		else
+			for j in 1:length(layer)
+				neuron = layer[j]
+				push!(errors,neuron["output"] - expected[j])
+            end
+        end
+		for j in 1:length(layer)
+			neuron = layer[j]
+			neuron["delta"] = errors[j] * transfer_derivative(neuron["output"])
+        end
+    end
+end
